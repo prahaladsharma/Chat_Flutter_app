@@ -1,7 +1,7 @@
 # flutter_app
 
 A new Flutter application.
-
+Demo of Creating own custom widget.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
