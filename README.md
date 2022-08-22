@@ -1,6 +1,7 @@
 # flutter_app
 
 A new Flutter application.
+Demo of Building dynamic lists.
 
 ## Getting Started
 
