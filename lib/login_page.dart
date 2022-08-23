@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
+
   void loginPage() {
+    print(userNameController.text);
+    print(passwordController.text);
     print("Login Succedd!");
   }
+
+  final userNameController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,15 +40,37 @@ class LoginPage extends StatelessWidget {
               Image.network(
                   'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
                   height: 200),
+
+              TextField(
+                controller: userNameController,
+                /*onChanged: (value){ //It will listen to every chat, that we enter in textfield.
+                  print('value : $value');
+                },*/
+                decoration: InputDecoration(
+                  hintText: 'Enter your email',
+                  hintStyle: TextStyle(color: Colors.blueGrey),
+                  border: OutlineInputBorder()
+                ),
+              ),
+
+              TextField(
+                controller: passwordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                    hintText: 'Enter your psddword',
+                    hintStyle: TextStyle(color: Colors.blueGrey),
+                    border: OutlineInputBorder()
+                ),
+              ),
+
               ElevatedButton(
                   onPressed: loginPage,
                   child: Text(
-                    'Click Me',
+                    'Login',
                     style: TextStyle(fontSize: 20),
                   )),
               OutlinedButton(onPressed: () {}, child: FlutterLogo()),
-              InkWell(
-                splashColor: Colors.red,
+              GestureDetector(
                 onDoubleTap: (){
                   print('Double tap');
                 },
@@ -59,7 +87,7 @@ class LoginPage extends StatelessWidget {
                   ],
                 ),
               )
-              //Both GestureDetectoe and InkWell are used for gesture detector.
+
               /*GestureDetector(
                 onDoubleTap: (){
                   print('Double tap');

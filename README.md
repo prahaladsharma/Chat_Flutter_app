@@ -1,6 +1,6 @@
 # flutter_app
 
-Flutter taps and gesture detection demo using InkWell and GestureDetector.
+Flutter demo for getting inputs from the user.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
