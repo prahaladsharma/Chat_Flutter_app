@@ -1,6 +1,6 @@
 # flutter_app
 
-Demo of stateful widgets.
+Flutter Buttons Demo
 ## Getting Started
 
 This project is a starting point for a Flutter application.

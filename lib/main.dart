@@ -13,7 +13,8 @@ class ChatApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Chat App',
       theme: ThemeData(primarySwatch: Colors.orange),
-      home: const  CounterStateful(),
+      home:  LoginPage(),
+      //home:  CounterStateful(buttonColor:Colors.blue),
     );
   }
 }

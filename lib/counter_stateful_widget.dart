@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CounterStateful extends StatefulWidget {
-  const CounterStateful({Key? key}) : super(key: key);
+  //Widget variable
+  Color buttonColor;
+
+  CounterStateful({Key? key, required this.buttonColor}) : super(key: key);
 
   @override
   State<CounterStateful> createState() {
@@ -13,7 +16,9 @@ class CounterStateful extends StatefulWidget {
 
 class _CounterStatefulState extends State<CounterStateful> {
 
+  //State variable
   int counter = 0;
+
 
   void increment() {
     setState(() {  //This function tell the framework to redraw the UI. It will call again build() to redraw UI.
@@ -27,6 +32,7 @@ class _CounterStatefulState extends State<CounterStateful> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+        backgroundColor: widget.buttonColor,
         child: Icon(Icons.add),
         onPressed: () {
           increment();
