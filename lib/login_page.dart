@@ -41,11 +41,42 @@ class LoginPage extends StatelessWidget {
                     style: TextStyle(fontSize: 20),
                   )),
               OutlinedButton(onPressed: () {}, child: FlutterLogo()),
-              TextButton(
-                  onPressed: () {
-
-                  },
-                  child: Text('https://google.com'))
+              InkWell(
+                splashColor: Colors.red,
+                onDoubleTap: (){
+                  print('Double tap');
+                },
+                onLongPress: (){
+                  print('on Long press');
+                },
+                onTap: (){
+                  print('Link clicked');
+                },
+                child: Column(
+                  children: [
+                    Text('Find us on'),
+                    Text('https://google.com'),
+                  ],
+                ),
+              )
+              //Both GestureDetectoe and InkWell are used for gesture detector.
+              /*GestureDetector(
+                onDoubleTap: (){
+                  print('Double tap');
+                },
+                onLongPress: (){
+                  print('on Long press');
+                },
+                onTap: (){
+                  print('Link clicked');
+                },
+                child: Column(
+                  children: [
+                    Text('Find us on'),
+                    Text('https://google.com'),
+                  ],
+                ),
+              )*/
             ],
           ),
         ),
