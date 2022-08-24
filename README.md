@@ -1,6 +1,6 @@
 # flutter_app
 
-Flutter demo for multiline in TextField.
+Flutter demo for Navigation from one screen to another.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
