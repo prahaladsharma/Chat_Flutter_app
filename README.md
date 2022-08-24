@@ -1,6 +1,6 @@
 # flutter_app
 
-Flutter demo for Navigating via named routing.
+Flutter demo for Replacing routes using Navigator.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
