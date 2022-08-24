@@ -1,6 +1,6 @@
 # flutter_app
 
-Flutter demo for passing data with navigation.
+Flutter demo for Navigating via named routing.
 ## Getting Started
 
 This project is a starting point for a Flutter application.

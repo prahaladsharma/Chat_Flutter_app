@@ -2,22 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/chat_page.dart';
 
 class LoginPage extends StatelessWidget {
-
   final _formkey = GlobalKey<FormState>();
+
   void loginPage(context) {
-    if(_formkey.currentState !=null && _formkey.currentState!.validate()){
+    if (_formkey.currentState != null && _formkey.currentState!.validate()) {
       print(userNameController.text);
       print(passwordController.text);
 
       //TODO: Navigate to chatpage on successfull login
-      Navigator.push(context, MaterialPageRoute(
-          builder: (context) => ChatPage(userName: userNameController.text,)));
+      Navigator.pushNamed(context, '/chat',
+          arguments: '${userNameController.text}');
 
       print("Login Succedd!");
     } else {
       print("Login not successful");
     }
-
   }
 
   final userNameController = TextEditingController();
@@ -52,26 +51,26 @@ class LoginPage extends StatelessWidget {
               Image.network(
                   'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
                   height: 200),
-
               Form(
                 key: _formkey,
                 child: Column(
                   children: [
                     TextFormField(
-                      validator: (value){
-                        if(value != null && value.isNotEmpty && value.length < 5){
+                      validator: (value) {
+                        if (value != null &&
+                            value.isNotEmpty &&
+                            value.length < 5) {
                           return "Your username should be more than 5 character";
-                        } else if(value !=null && value.isEmpty){
+                        } else if (value != null && value.isEmpty) {
                           return "Please type your username";
                         }
                         return null;
                       },
                       controller: userNameController,
                       decoration: InputDecoration(
-                        hintText: 'Enter your email',
-                        hintStyle: TextStyle(color: Colors.blueGrey),
-                        border: OutlineInputBorder()
-                      ),
+                          hintText: 'Enter your email',
+                          hintStyle: TextStyle(color: Colors.blueGrey),
+                          border: OutlineInputBorder()),
                     ),
                     SizedBox(
                       height: 24,
@@ -82,15 +81,13 @@ class LoginPage extends StatelessWidget {
                       decoration: InputDecoration(
                           hintText: 'Enter your psddword',
                           hintStyle: TextStyle(color: Colors.blueGrey),
-                          border: OutlineInputBorder()
-                      ),
+                          border: OutlineInputBorder()),
                     ),
                   ],
                 ),
               ),
-
               ElevatedButton(
-                  onPressed: (){
+                  onPressed: () {
                     loginPage(context);
                   },
                   child: Text(
@@ -99,13 +96,13 @@ class LoginPage extends StatelessWidget {
                   )),
               OutlinedButton(onPressed: () {}, child: FlutterLogo()),
               GestureDetector(
-                onDoubleTap: (){
+                onDoubleTap: () {
                   print('Double tap');
                 },
-                onLongPress: (){
+                onLongPress: () {
                   print('on Long press');
                 },
-                onTap: (){
+                onTap: () {
                   print('Link clicked');
                 },
                 child: Column(

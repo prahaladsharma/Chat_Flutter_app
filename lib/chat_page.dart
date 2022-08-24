@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
 
-  final String userName;
-  ChatPage({Key? key, required this.userName}) : super(key: key);
+  ChatPage({Key? key}) : super(key: key);
 
   final chatMessageController = TextEditingController();
 
@@ -13,6 +12,9 @@ class ChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final userName = ModalRoute.of(context)!.settings.arguments as String;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
