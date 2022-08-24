@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
 
+  final _formkey = GlobalKey<FormState>();
   void loginPage() {
-    print(userNameController.text);
-    print(passwordController.text);
-    print("Login Succedd!");
+    if(_formkey.currentState !=null && _formkey.currentState!.validate()){
+      print(userNameController.text);
+      print(passwordController.text);
+
+      print("Login Succedd!");
+    } else {
+      print("Login not successful");
+    }
+
   }
 
   final userNameController = TextEditingController();
@@ -41,25 +48,39 @@ class LoginPage extends StatelessWidget {
                   'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
                   height: 200),
 
-              TextField(
-                controller: userNameController,
-                /*onChanged: (value){ //It will listen to every chat, that we enter in textfield.
-                  print('value : $value');
-                },*/
-                decoration: InputDecoration(
-                  hintText: 'Enter your email',
-                  hintStyle: TextStyle(color: Colors.blueGrey),
-                  border: OutlineInputBorder()
-                ),
-              ),
-
-              TextField(
-                controller: passwordController,
-                obscureText: true,
-                decoration: InputDecoration(
-                    hintText: 'Enter your psddword',
-                    hintStyle: TextStyle(color: Colors.blueGrey),
-                    border: OutlineInputBorder()
+              Form(
+                key: _formkey,
+                child: Column(
+                  children: [
+                    TextFormField(
+                      validator: (value){
+                        if(value != null && value.isNotEmpty && value.length < 5){
+                          return "Your username should be more than 5 character";
+                        } else if(value !=null && value.isEmpty){
+                          return "Please type your username";
+                        }
+                        return null;
+                      },
+                      controller: userNameController,
+                      decoration: InputDecoration(
+                        hintText: 'Enter your email',
+                        hintStyle: TextStyle(color: Colors.blueGrey),
+                        border: OutlineInputBorder()
+                      ),
+                    ),
+                    SizedBox(
+                      height: 24,
+                    ),
+                    TextFormField(
+                      controller: passwordController,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                          hintText: 'Enter your psddword',
+                          hintStyle: TextStyle(color: Colors.blueGrey),
+                          border: OutlineInputBorder()
+                      ),
+                    ),
+                  ],
                 ),
               ),
 

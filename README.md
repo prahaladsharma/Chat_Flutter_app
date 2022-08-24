@@ -1,6 +1,6 @@
 # flutter_app
 
-Flutter demo for getting inputs from the user.
+Flutter demo for TextField Validation.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
