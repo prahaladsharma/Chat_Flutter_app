@@ -1,6 +1,6 @@
 # flutter_app
 
-Flutter demo for TextField Validation.
+Flutter demo for multiline in TextField.
 ## Getting Started
 
 This project is a starting point for a Flutter application.

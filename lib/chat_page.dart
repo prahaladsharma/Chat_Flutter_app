@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
-  const ChatPage({Key? key}) : super(key: key);
+  ChatPage({Key? key}) : super(key: key);
+
+  final chatMessageController = TextEditingController();
+
+  void onSendButtonPressed() {
+    print('Chat Message: ${chatMessageController.text}');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +26,8 @@ class ChatPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Expanded( //Flexible
+          Expanded(
+            //Flexible
             child: ListView(
               children: [
                 Align(
@@ -166,8 +173,21 @@ class ChatPage extends StatelessWidget {
                   icon: Icon(Icons.add),
                   color: Colors.white,
                 ),
+                Expanded(
+                    child: TextField(
+                      keyboardType: TextInputType.multiline,
+                      maxLines: 5,
+                      minLines: 1,
+                      controller: chatMessageController,
+                      textCapitalization: TextCapitalization.sentences,
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                      hintText: "Enter your message here",
+                      hintStyle: TextStyle(color: Colors.blueGrey),
+                      border: InputBorder.none),
+                )),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: onSendButtonPressed,
                   icon: Icon(Icons.send),
                   color: Colors.white,
                 )
@@ -178,9 +198,7 @@ class ChatPage extends StatelessWidget {
                 borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
           )
         ],
-          
       ),
-        
     );
   }
 }
