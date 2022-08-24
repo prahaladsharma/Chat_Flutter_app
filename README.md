@@ -1,6 +1,6 @@
 # flutter_app
 
-Flutter demo for Navigation from one screen to another.
+Flutter demo for passing data with navigation.
 ## Getting Started
 
 This project is a starting point for a Flutter application.

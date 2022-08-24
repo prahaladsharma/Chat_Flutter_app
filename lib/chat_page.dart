@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
-  ChatPage({Key? key}) : super(key: key);
+
+  final String userName;
+  ChatPage({Key? key, required this.userName}) : super(key: key);
 
   final chatMessageController = TextEditingController();
 
@@ -15,7 +17,7 @@ class ChatPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('Hi Prahalad'),
+        title: Text('Hi $userName'),
         actions: [
           IconButton(
               onPressed: () {
