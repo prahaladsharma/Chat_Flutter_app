@@ -3,6 +3,8 @@ import 'package:flutter_app/chat_page.dart';
 import 'package:flutter_app/utils/textfield_style.dart';
 import 'package:flutter_app/widgets/login_text_field.dart';
 
+import 'utils/spaces.dart';
+
 class LoginPage extends StatelessWidget {
   final _formkey = GlobalKey<FormState>();
 
@@ -71,9 +73,7 @@ class LoginPage extends StatelessWidget {
                       },
                       controller: userNameController,
                     ),
-                    SizedBox(
-                      height: 24,
-                    ),
+                    verticalSpacing(24),
                     LoginTextField(
                       hasAsterisks: true,
                       hintText: 'Enter your password',
@@ -82,6 +82,7 @@ class LoginPage extends StatelessWidget {
                   ],
                 ),
               ),
+              verticalSpacing(20),
               ElevatedButton(
                   onPressed: () {
                     loginPage(context);
