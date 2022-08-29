@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/chat_page.dart';
+import 'package:flutter_app/utils/textfield_style.dart';
+import 'package:flutter_app/widgets/login_text_field.dart';
 
 class LoginPage extends StatelessWidget {
   final _formkey = GlobalKey<FormState>();
@@ -55,7 +57,8 @@ class LoginPage extends StatelessWidget {
                 key: _formkey,
                 child: Column(
                   children: [
-                    TextFormField(
+                    LoginTextField(
+                      hintText:"Enter your username",
                       validator: (value) {
                         if (value != null &&
                             value.isNotEmpty &&
@@ -67,21 +70,14 @@ class LoginPage extends StatelessWidget {
                         return null;
                       },
                       controller: userNameController,
-                      decoration: InputDecoration(
-                          hintText: 'Enter your email',
-                          hintStyle: TextStyle(color: Colors.blueGrey),
-                          border: OutlineInputBorder()),
                     ),
                     SizedBox(
                       height: 24,
                     ),
-                    TextFormField(
+                    LoginTextField(
+                      hasAsterisks: true,
+                      hintText: 'Enter your password',
                       controller: passwordController,
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          hintText: 'Enter your psddword',
-                          hintStyle: TextStyle(color: Colors.blueGrey),
-                          border: OutlineInputBorder()),
                     ),
                   ],
                 ),
