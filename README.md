@@ -1,6 +1,6 @@
 # flutter_app
 
-Flutter demo for Organize the styles and colors for the login page.
+Flutter demo for pubspec.yaml with assets example for login page.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
