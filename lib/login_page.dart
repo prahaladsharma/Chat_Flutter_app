@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/chat_page.dart';
 import 'package:flutter_app/utils/textfield_style.dart';
 import 'package:flutter_app/widgets/login_text_field.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'utils/spaces.dart';
 
@@ -25,6 +26,7 @@ class LoginPage extends StatelessWidget {
 
   final userNameController = TextEditingController();
   final passwordController = TextEditingController();
+  final _mainUrl = 'https://swapi.co';
 
   @override
   Widget build(BuildContext context) {
@@ -100,13 +102,16 @@ class LoginPage extends StatelessWidget {
                 onLongPress: () {
                   print('on Long press');
                 },
-                onTap: () {
+                onTap: ()  async{
                   print('Link clicked');
+                  if (!await launchUrl(Uri.https(_mainUrl, 'api/people'))) {
+                    throw 'Could not launch';
+                  }
                 },
                 child: Column(
                   children: [
                     Text('Find us on'),
-                    Text('https://google.com'),
+                    Text(_mainUrl),
                   ],
                 ),
               )

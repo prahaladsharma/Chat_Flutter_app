@@ -1,6 +1,6 @@
 # flutter_app
 
-Flutter demo for pubspec.yaml with assets example for login page.
+Flutter demo for pubspec.yaml by using external lib like open browser.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
