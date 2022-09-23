@@ -1,6 +1,7 @@
 # flutter_app
 
-Flutter demo for pubspec.yaml by using external lib like open browser.
+Flutter demo for pubspec.yaml, by adding package from external source like Github.
+Demo for adding social media buttons like twitter, linkedin.
 ## Getting Started
 
 This project is a starting point for a Flutter application.

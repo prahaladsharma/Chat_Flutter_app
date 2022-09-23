@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/chat_page.dart';
 import 'package:flutter_app/utils/textfield_style.dart';
 import 'package:flutter_app/widgets/login_text_field.dart';
+import 'package:social_media_buttons/social_media_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'utils/spaces.dart';
@@ -114,6 +115,22 @@ class LoginPage extends StatelessWidget {
                     Text(_mainUrl),
                   ],
                 ),
+              ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SocialMediaButton.twitter(
+                    size: 20,
+                    color: Colors.blue,
+                    url: "https://twitter.com",
+                  ),
+                  SocialMediaButton.linkedin(
+                    size: 20,
+                    color: Colors.blue,
+                    url: "https://linkedin.com"
+                  )
+                ],
               )
 
               /*GestureDetector(
