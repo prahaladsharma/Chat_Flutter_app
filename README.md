@@ -1,6 +1,6 @@
 # flutter_app
 
-Flutter demo for using Model classes.
+Flutter demo for using Generic classes.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
