@@ -1,29 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/model/chat_message_entity.dart';
+import 'package:flutter_app/widgets/chat_bubble.dart';
+import 'package:flutter_app/widgets/chat_input.dart';
 
 class ChatPage extends StatelessWidget {
-
-  ChatPage({Key? key}) : super(key: key);
-
-  final chatMessageController = TextEditingController();
-
-  void onSendButtonPressed() {
-    print('Chat Message: ${chatMessageController.text}');
-  }
+  const ChatPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     final userName = ModalRoute.of(context)!.settings.arguments as String;
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('Hi $userName'),
+        title: Text('Hi $userName!'),
         actions: [
           IconButton(
               onPressed: () {
-                //TODO: Navigate back to LoginPage on layout
                 Navigator.pushReplacementNamed(context, '/');
                 print('Logout Icon press!!');
               },
@@ -32,179 +26,27 @@ class ChatPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Expanded(
-            //Flexible
-            child: ListView(
-              children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Container(
-                    padding: EdgeInsets.all(24),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'Hi, this is your mrssage',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                        ),
-                        Image.network(
-                          'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
-                          height: 80,
-                        )
-                      ],
-                    ),
-                    margin: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(12),
-                            topRight: Radius.circular(12),
-                            bottomLeft: Radius.circular(12))),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Container(
-                    padding: EdgeInsets.all(24),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'Hi, this is your mrssage',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                        ),
-                        Image.network(
-                          'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
-                          height: 80,
-                        )
-                      ],
-                    ),
-                    margin: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(12),
-                            topRight: Radius.circular(12),
-                            bottomLeft: Radius.circular(12))),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Container(
-                    padding: EdgeInsets.all(24),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'Hi, this is your mrssage',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                        ),
-                        Image.network(
-                          'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
-                          height: 80,
-                        )
-                      ],
-                    ),
-                    margin: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(12),
-                            topRight: Radius.circular(12),
-                            bottomLeft: Radius.circular(12))),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Container(
-                    padding: EdgeInsets.all(24),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'Hi, this is your mrssage',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                        ),
-                        Image.network(
-                          'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
-                          height: 80,
-                        )
-                      ],
-                    ),
-                    margin: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(12),
-                            topRight: Radius.circular(12),
-                            bottomLeft: Radius.circular(12))),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Container(
-                    padding: EdgeInsets.all(24),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'Hi, this is your mrssage',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                        ),
-                        Image.network(
-                          'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
-                          height: 80,
-                        )
-                      ],
-                    ),
-                    margin: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(12),
-                            topRight: Radius.circular(12),
-                            bottomLeft: Radius.circular(12))),
-                  ),
-                ),
-              ],
-            ),
+          Expanded( //Flexible
+            child: ListView.builder(
+                itemCount: 10,
+                itemBuilder: (context, index){
+                  return ChatBubble(
+                      alignment: index % 2 == 0
+                          ? Alignment.centerLeft
+                          : Alignment.centerRight,
+                      chatMessageEntity: ChatMessageEntity(
+                        id: '1234',
+                        text: 'Hello this is prahalad',
+                        createdAt: DateTime.now().microsecondsSinceEpoch,
+                        athor: Author(userName: 'prahalad')
+                      ));
+                }),
           ),
-          Container(
-            height: 60,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.add),
-                  color: Colors.white,
-                ),
-                Expanded(
-                    child: TextField(
-                      keyboardType: TextInputType.multiline,
-                      maxLines: 5,
-                      minLines: 1,
-                      controller: chatMessageController,
-                      textCapitalization: TextCapitalization.sentences,
-                  style: TextStyle(color: Colors.white),
-                  decoration: InputDecoration(
-                      hintText: "Enter your message here",
-                      hintStyle: TextStyle(color: Colors.blueGrey),
-                      border: InputBorder.none),
-                )),
-                IconButton(
-                  onPressed: onSendButtonPressed,
-                  icon: Icon(Icons.send),
-                  color: Colors.white,
-                )
-              ],
-            ),
-            decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
-          )
+          ChatInput()
         ],
+
       ),
+
     );
   }
 }
