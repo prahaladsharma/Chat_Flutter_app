@@ -1,7 +1,6 @@
 # flutter_app
 
-Flutter demo for using Generic classes.
-Check chat_page.dart class for generic examples.
+Flutter demo for reading data from a JSON file.
 ## Getting Started
 
 This project is a starting point for a Flutter application.

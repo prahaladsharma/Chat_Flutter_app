@@ -1,30 +1,45 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_app/model/chat_message_entity.dart';
 import 'package:flutter_app/widgets/chat_bubble.dart';
 import 'package:flutter_app/widgets/chat_input.dart';
 
-class ChatPage extends StatelessWidget {
+class ChatPage extends StatefulWidget {
    ChatPage({Key? key}) : super(key: key);
 
-  List<ChatMessageEntity> _messages = [
-    ChatMessageEntity(
-        athor: Author(userName: 'prahalad'),
-        createdAt: 2131231242,
-        id: '1',
-        text: 'First text'),
-    ChatMessageEntity(
-        athor: Author(userName: 'pooja'),
-        createdAt: 2131231442,
-        id: '1',
-        text: 'Second text',
-        imageUrl: 'https://3009709.youcanlearnit.net/Alien_LIL_131338.png'),
-    ChatMessageEntity(
-      athor: Author(userName: 'jane'),
-      createdAt: 2131234242,
-      id: '1',
-      text: 'Third text',
-    )
-  ];
+  @override
+  State<ChatPage> createState() => _ChatPageState();
+}
+
+class _ChatPageState extends State<ChatPage> {
+
+  //initiate state of message
+  List<ChatMessageEntity> _messages = [];
+
+  _loadInitialMessages() async {
+    final response = await rootBundle.loadString('assets/mock_message.json');
+
+    final List<dynamic> decodedList = jsonDecode(response) as List;
+
+    final List<ChatMessageEntity> _chatMessages = decodedList.map((listItem) {
+      return ChatMessageEntity.fromJson(listItem);
+    }).toList();
+
+    print(_chatMessages.length);
+
+    //final state of the messages
+    setState(() {
+      _messages = _chatMessages;
+    });
+  }
+
+  @override
+  void initState() {
+    _loadInitialMessages();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +66,7 @@ class ChatPage extends StatelessWidget {
                 itemCount: _messages.length,
                 itemBuilder: (context, index){
                   return ChatBubble(
-                      alignment: _messages[index].athor.userName == 'prahalad'
+                      alignment: _messages[index].author.userName == 'prahalad'
                           ? Alignment.centerRight
                           : Alignment.centerLeft,
                       chatMessageEntity: _messages[index]);
