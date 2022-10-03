@@ -1,6 +1,6 @@
 # flutter_app
 
-Flutter demo for reading data from a JSON file.
+Flutter demo for adding type message in chat list by calling a parent class method from child class.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
