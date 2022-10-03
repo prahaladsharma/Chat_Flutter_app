@@ -14,6 +14,7 @@ class ChatBubble extends StatelessWidget {
     return Align(
       alignment: alignment,
       child: Container(
+        constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.5),  //It will take 50% of the screen.
         padding: EdgeInsets.all(24),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -25,11 +26,11 @@ class ChatBubble extends StatelessWidget {
             if(chatMessageEntity.imageUrl != null)
               Image.network(
               '${chatMessageEntity.imageUrl}',
-              height: 80,
+              height: 200,
             )
           ],
         ),
-        margin: EdgeInsets.all(20),
+        margin: EdgeInsets.all(50),
         decoration: BoxDecoration(
             color: Colors.grey,
             borderRadius: BorderRadius.only(
