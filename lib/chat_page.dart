@@ -19,20 +19,28 @@ class _ChatPageState extends State<ChatPage> {
   List<ChatMessageEntity> _messages = [];
 
   _loadInitialMessages() async {
-    final response = await rootBundle.loadString('assets/mock_message.json');
+    //So here we are using async code
+    //either we can use await() or then() (just similar to Java Script)
+    await rootBundle.loadString('assets/mock_message.json').then((response) {
+      final List<dynamic> decodedList = jsonDecode(response) as List;
 
-    final List<dynamic> decodedList = jsonDecode(response) as List;
+      final List<ChatMessageEntity> _chatMessages = decodedList.map((listItem) {
+        return ChatMessageEntity.fromJson(listItem);
+      }).toList();
 
-    final List<ChatMessageEntity> _chatMessages = decodedList.map((listItem) {
-      return ChatMessageEntity.fromJson(listItem);
-    }).toList();
+      print(_chatMessages.length);
 
-    print(_chatMessages.length);
-
-    //final state of the messages
-    setState(() {
-      _messages = _chatMessages;
+      //final state of the messages
+      setState(() {
+        _messages = _chatMessages;
+      });
+    }).then((_) {  //_ for if you not expecting any result
+      print('Neated then for async');
     });
+
+    //This print will execute either above code give response or not
+    print('It will be print without blocking');
+
   }
 
   onMessageSent(ChatMessageEntity entity){

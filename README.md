@@ -1,6 +1,6 @@
 # flutter_app
 
-Flutter demo for adding type message in chat list by calling a parent class method from child class.
+Flutter demo for Handling async operations in Dart.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
