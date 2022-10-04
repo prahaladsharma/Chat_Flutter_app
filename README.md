@@ -1,6 +1,7 @@
 # flutter_app
 
-Flutter demo for Handling async operations in Dart.
+Flutter demo for Deserialize JSON with the JsonSerializable package.
+Terminal CMD:-  flutter pub run build_runner build (for create g.dart file)
 ## Getting Started
 
 This project is a starting point for a Flutter application.
