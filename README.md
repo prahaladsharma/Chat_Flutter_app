@@ -1,10 +1,9 @@
 # flutter_app
 
-Flutter demo for Integrating REST API
+Flutter demo for FeatureBuilder for futures.
 Action Item:-
-1. Add dependency in dev_dependencies in pubsepc.yaml file:-  (http: any)
-2. Create Model class and "g.dart" class for response parsing:- image_model.dart, image_model.g.dart
-3. call Rest API in chat_page.dart class. :-   chat_page.dart(_getImageNetwork()
+1. Add url(getting from network API) on top the screen:-  chat_page.dart
+
 
 ## Getting Started
 
