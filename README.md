@@ -1,7 +1,11 @@
 # flutter_app
 
-Flutter demo for Deserialize JSON with the JsonSerializable package.
-Terminal CMD:-  flutter pub run build_runner build (for create g.dart file)
+Flutter demo for Integrating REST API
+Action Item:-
+1. Add dependency in dev_dependencies in pubsepc.yaml file:-  (http: any)
+2. Create Model class and "g.dart" class for response parsing:- image_model.dart, image_model.g.dart
+3. call Rest API in chat_page.dart class. :-   chat_page.dart(_getImageNetwork()
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
