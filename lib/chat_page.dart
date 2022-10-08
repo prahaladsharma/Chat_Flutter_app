@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/model/chat_message_entity.dart';
+import 'package:flutter_app/repo/image_repository.dart';
 import 'package:flutter_app/widgets/chat_bubble.dart';
 import 'package:flutter_app/widgets/chat_input.dart';
 import 'package:http/http.dart' as http;
@@ -43,37 +44,18 @@ class _ChatPageState extends State<ChatPage> {
     setState(() {});
   }
 
-  //getImage network API
-  Future<List<PixelfordImage>> _getImageNetwork() async {
-    var endPointUrl = Uri.parse('https://pixelford.com/api2/images');
-    final response = await http.get(endPointUrl);
-    //print(response.body);
-
-    if(response.statusCode == 200) {
-      final List<dynamic> decodedList = jsonDecode(response.body) as List;
-
-      final List<PixelfordImage> _imageList = decodedList.map((listItem) {
-        return PixelfordImage.fromJson(listItem);
-      }).toList();
-      //print(_imageList[0].urlFullSize);
-      return _imageList;
-    } else{
-      throw Exception('API not successfull!!!');
-    }
-
-  }
+  //Call image network API from repository
+  final ImageRepository _imageRepo = ImageRepository();
 
 
   @override
   void initState() {
     _loadInitialMessages();
-    _getImageNetwork();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    _getImageNetwork();
     final userName = ModalRoute.of(context)!.settings.arguments as String;
 
     return Scaffold(
@@ -93,7 +75,7 @@ class _ChatPageState extends State<ChatPage> {
       body: Column(
         children: [
           FutureBuilder<List<PixelfordImage>>(
-              future: _getImageNetwork(),
+              future: _imageRepo.getImageNetwork(),
               builder: (BuildContext context,
                   AsyncSnapshot<List<PixelfordImage>> snapshot) {
                 if (snapshot.hasData)

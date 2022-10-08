@@ -1,8 +1,10 @@
 # flutter_app
 
-Flutter demo for FeatureBuilder for futures.
+Flutter demo for Repository patterns.
+. for separation the business logic with UI, creating repository classes and calling network API from there.
 Action Item:-
-1. Add url(getting from network API) on top the screen:-  chat_page.dart
+1. Create image_repository.dart in repo package and call network API.
+2. chat_page.dart:- call network API fom repository to here.
 
 
 ## Getting Started
