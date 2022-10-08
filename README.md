@@ -1,10 +1,11 @@
 # flutter_app
 
-Flutter demo for Repository patterns.
-. for separation the business logic with UI, creating repository classes and calling network API from there.
+Flutter demo for GridView in a ModelBottomSheet.
+ - We will create bottom sheet with images(from network API) on click '+' icon.
 Action Item:-
-1. Create image_repository.dart in repo package and call network API.
-2. chat_page.dart:- call network API fom repository to here.
+1. create UI in picker_body.dart
+2. Add picker in - chat_input.dart
+3. Remove unnecessary code like showing image on top of the screen from - chat_page.dart
 
 
 ## Getting Started
