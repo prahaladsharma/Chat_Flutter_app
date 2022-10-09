@@ -1,12 +1,10 @@
 # flutter_app
 
-Flutter demo for GridView in a ModelBottomSheet.
- - We will create bottom sheet with images(from network API) on click '+' icon.
+Flutter demo for showing selected image in ChatInput.
+ - onTap(), we will select image and send on chat.
 Action Item:-
-1. create UI in picker_body.dart
-2. Add picker in - chat_input.dart
-3. Remove unnecessary code like showing image on top of the screen from - chat_page.dart
-
+1. picker_body.dart
+2. chat_input.dart
 
 ## Getting Started
 

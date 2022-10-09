@@ -6,7 +6,9 @@ import '../model/image_model.dart';
 
 class NetworkImagePickerBody extends StatelessWidget {
 
-  NetworkImagePickerBody({Key? key}) : super(key: key);
+  final Function(String) onImageSelected;
+
+  NetworkImagePickerBody({Key? key, required this.onImageSelected}) : super(key: key);
 
   final ImageRepository _imageRepo = ImageRepository();
 
@@ -20,7 +22,11 @@ class NetworkImagePickerBody extends StatelessWidget {
             return GridView.builder(
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index){
-              return Image.network(snapshot.data![index].urlSmallSize);  //Image.network:- Creates a widget that displays an [ImageStream] obtained from the network.
+              return GestureDetector(
+                onTap: (){ //Here we get image on tap and showing on chat input box.
+                  onImageSelected(snapshot.data![index].urlSmallSize);
+                },
+                  child: Image.network(snapshot.data![index].urlSmallSize));  //Image.network:- Creates a widget that displays an [ImageStream] obtained from the network.
             }, gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
               crossAxisSpacing: 2,
               mainAxisSpacing: 2,

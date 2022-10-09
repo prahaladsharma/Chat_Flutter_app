@@ -2,17 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/model/chat_message_entity.dart';
 import 'package:flutter_app/widgets/picker_body.dart';
 
-class ChatInput extends StatelessWidget {
+class ChatInput extends StatefulWidget {
 
   final Function(ChatMessageEntity) onSubmit;
 
   ChatInput({Key? key, required this.onSubmit}) : super(key: key);
 
+  @override
+  State<ChatInput> createState() => _ChatInputState();
+}
+
+class _ChatInputState extends State<ChatInput> {
+  String _selectedImageUrl = '';
+
   final chatMessageController = TextEditingController();
 
   void onSendButtonPressed() {
     print('ChatMessage: ${chatMessageController.text}');
-    
+
     //TODO: Add new message to the default list
     final newChatMessage = ChatMessageEntity(
         text: chatMessageController.text,
@@ -20,13 +27,31 @@ class ChatInput extends StatelessWidget {
         createdAt: DateTime.now().millisecondsSinceEpoch,
         author: Author(userName: "prahalad")
     );
-    onSubmit(newChatMessage);
+
+    if(_selectedImageUrl.isNotEmpty){
+      newChatMessage.imageUrl = _selectedImageUrl;
+    }
+
+    widget.onSubmit(newChatMessage);
+
+    //After sending text message and image, we have to empty the chat input box,
+    chatMessageController.clear();
+    _selectedImageUrl = '';
+    setState(() {});
+  }
+
+  //Here we get image on Tap and assign to _selectedImageUrl
+  //So then it will show on chat input widget
+  void onImagePicked(String newImageUrl){
+    setState(() {
+      _selectedImageUrl = newImageUrl;
+    });
+    Navigator.of(context).pop();  //After tap  on image, we will closing the bottom sheet
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -36,7 +61,7 @@ class ChatInput extends StatelessWidget {
               showModalBottomSheet(
                   context: context,
                   builder: (BuildContext context) {
-                return NetworkImagePickerBody();
+                return NetworkImagePickerBody(onImageSelected: onImagePicked,);
               });
 
 
@@ -47,17 +72,24 @@ class ChatInput extends StatelessWidget {
             ),
           ),
           Expanded(
-              child: TextField(
-                keyboardType: TextInputType.multiline,
-                maxLines: 5,
-                minLines: 1,
-                controller: chatMessageController,
-                textCapitalization: TextCapitalization.sentences,
-                style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                    hintText: "Type your message",
-                    hintStyle: TextStyle(color: Colors.blueGrey),
-                    border: InputBorder.none),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,  //It will move to taped image on left-start of the widget.
+                children: [
+                  TextField(
+                    keyboardType: TextInputType.multiline,
+                    maxLines: 5,
+                    minLines: 1,
+                    controller: chatMessageController,
+                    textCapitalization: TextCapitalization.sentences,
+                    style: TextStyle(color: Colors.white),
+                    decoration: InputDecoration(
+                        hintText: "Type your message",
+                        hintStyle: TextStyle(color: Colors.blueGrey),
+                        border: InputBorder.none),
+                  ),
+                  if(_selectedImageUrl.isNotEmpty)
+                    Image.network(_selectedImageUrl, height: 50,),
+                ],
               )),
           IconButton(
             onPressed: onSendButtonPressed,
