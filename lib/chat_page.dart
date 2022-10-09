@@ -12,7 +12,7 @@ import 'package:http/http.dart' as http;
 import 'model/image_model.dart';
 
 class ChatPage extends StatefulWidget {
-   ChatPage({Key? key}) : super(key: key);
+  ChatPage({Key? key}) : super(key: key);
 
   @override
   State<ChatPage> createState() => _ChatPageState();
