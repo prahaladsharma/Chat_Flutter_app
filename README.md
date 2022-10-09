@@ -1,10 +1,10 @@
 # flutter_app
 
-Flutter demo for showing selected image in ChatInput.
- - onTap(), we will select image and send on chat.
+Flutter demo for Exception Handling.
+ - Exception handling for REST API call
 Action Item:-
 1. picker_body.dart
-2. chat_input.dart
+2. image_repository.dart
 
 ## Getting Started
 
