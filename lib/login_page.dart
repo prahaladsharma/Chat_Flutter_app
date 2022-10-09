@@ -33,6 +33,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
@@ -55,10 +56,17 @@ class LoginPage extends StatelessWidget {
                     fontSize: 20,
                     color: Colors.blueGrey),
               ),
-              Image.asset(
-                'assets/illustration.png',
-                //'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
-                  height: 200),
+              verticalSpacing(24),
+              Container(  //Making login banner image round
+                height: 200,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        fit: BoxFit.fitWidth, //It will stretch the image
+                        image:  AssetImage('assets/illustration.png')),
+                    borderRadius: BorderRadius.circular(12)),
+              ),
+              verticalSpacing(24),
               Form(
                 key: _formkey,
                 child: Column(
