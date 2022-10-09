@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/model/chat_message_entity.dart';
 import 'package:flutter_app/repo/image_repository.dart';
+import 'package:flutter_app/service/auth_service.dart';
 import 'package:flutter_app/widgets/chat_bubble.dart';
 import 'package:flutter_app/widgets/chat_input.dart';
 import 'package:http/http.dart' as http;
@@ -79,7 +80,7 @@ class _ChatPageState extends State<ChatPage> {
                 itemCount: _messages.length,
                 itemBuilder: (context, index){
                   return ChatBubble(
-                      alignment: _messages[index].author.userName == 'prahalad'
+                      alignment: _messages[index].author.userName == AuthService().getUserName()
                           ? Alignment.centerRight
                           : Alignment.centerLeft,
                       chatMessageEntity: _messages[index]);

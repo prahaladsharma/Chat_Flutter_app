@@ -1,13 +1,13 @@
 # flutter_app
 
-Flutter demo for Creating rounded UI elements.
+Flutter demo for state management.
+ - Here we create a AuthService class and store username and then pass it entire application.
 
  Action Item:-
- 1. picker_body.dart
+ 1. auth_service.dart
  2. chat_bubble.dart
- 3. main.dart
- 4. chat_page.dart
- 5. login_page.dart
+ 3. chat_page.dart
+ 4. chat_input.dart
 
 
 ## Getting Started
