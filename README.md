@@ -1,19 +1,13 @@
 # flutter_app
 
-Flutter demo for showing selected image in ChatInput and Exception Handling.
- - Selected image in chat list
- - onTap(), we will select image and send on chat.
+Flutter demo for Creating rounded UI elements.
+
  Action Item:-
  1. picker_body.dart
- 2. chat_input.dart
-
-
- - Exception handling for REST API call
-Action Item:-
-1. picker_body.dart
-2. image_repository.dart
-
-
+ 2. chat_bubble.dart
+ 3. main.dart
+ 4. chat_page.dart
+ 5. login_page.dart
 
 
 ## Getting Started
