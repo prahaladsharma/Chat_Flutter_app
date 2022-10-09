@@ -1,10 +1,20 @@
 # flutter_app
 
-Flutter demo for Exception Handling.
+Flutter demo for showing selected image in ChatInput and Exception Handling.
+ - Selected image in chat list
+ - onTap(), we will select image and send on chat.
+ Action Item:-
+ 1. picker_body.dart
+ 2. chat_input.dart
+
+
  - Exception handling for REST API call
 Action Item:-
 1. picker_body.dart
 2. image_repository.dart
+
+
+
 
 ## Getting Started
 
