@@ -20,7 +20,7 @@ class _ChatInputState extends State<ChatInput> {
   final chatMessageController = TextEditingController();
 
   void onSendButtonPressed() async {
-    String userNameFromCache = await context.read<AuthService>().getUserName();
+    String? userNameFromCache = await context.read<AuthService>().getUserName();
     print('ChatMessage: ${chatMessageController.text}');
 
     // Add new message to the default list

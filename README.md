@@ -1,15 +1,12 @@
 # flutter_app
 
-Flutter demo for caching data(Shared Preferences).
- - Here we create Shared Preferences demo.
+Flutter demo for static initializer.
+ - Here we create Static initializer demo.
 
  Action Item:-
  1. auth_service.dart
  2. chat_input.dart
- 3. login_page.dart
- 4. login_text_field.dart
- 5. pubspec.yaml
-
+ 3. main.dart
 
 ## Getting Started
 

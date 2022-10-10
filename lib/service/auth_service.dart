@@ -3,25 +3,25 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
 
-  final Future<SharedPreferences> _prefers = SharedPreferences.getInstance();
+  static init() async {
+    _prefers = await SharedPreferences.getInstance();
+  }
+
+  static late final SharedPreferences _prefers;
 
   Future<void> loginUser(String userName) async {
     try {
-      SharedPreferences sharedPreferences = await _prefers;
-      sharedPreferences.setString('userName', userName);
+      _prefers.setString('userName', userName);
     } catch(e){
       print(e);
     }
   }
 
-  void logoutUser() async {
-    SharedPreferences sharedPreferences = await _prefers;
-    sharedPreferences.clear();
+  void logoutUser() {
+    _prefers.clear();
   }
 
-  Future<String> getUserName() async {
-    SharedPreferences sharedPreferences = await _prefers;
-    return sharedPreferences.getString('userName') ?? 'DefaultValue' ;
-
+  String? getUserName() {
+    return _prefers.getString('userName') ?? 'DefaultValue' ;
   }
 }
