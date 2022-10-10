@@ -1,13 +1,13 @@
 # flutter_app
 
-Flutter demo for state management using provider lib.
- - Here we create a AuthService class and store username and then pass it entire application using provider lib.
+Flutter demo for caching data(Shared Preferences).
+ - Here we create Shared Preferences demo.
 
  Action Item:-
- 1. main.dart
- 2. chat_bubble.dart
- 3. chat_page.dart
- 4. chat_input.dart
+ 1. auth_service.dart
+ 2. chat_input.dart
+ 3. login_page.dart
+ 4. login_text_field.dart
  5. pubspec.yaml
 
 
