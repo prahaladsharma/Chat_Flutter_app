@@ -1,12 +1,10 @@
 # flutter_app
 
-Flutter demo for dynamic home page.
- - Here we create flutter app, if user login once, not need to login again if he not logout.
+Flutter demo for making UI responsive for the web.
+ - Here we create flutter app for making UI responsive for the web.
 
  Action Item:-
- 1. auth_service.dart
- 2. chat_page.dart
- 3. main.dart
+ 1. login_page.dart
 
 ## Getting Started
 

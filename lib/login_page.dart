@@ -33,6 +33,128 @@ class LoginPage extends StatelessWidget {
   final passwordController = TextEditingController();
   final _mainUrl = 'https://swapi.co';
 
+  Widget _buildHeader(context) {
+    return Column(
+      children: [
+        Text('Let\'s sign you in!',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: 30,
+                color: Colors.brown,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 0.5)),
+        Text(
+          'Welcome back! \n you\'ve been missed!',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+              color: Colors.blueGrey),
+        ),
+        verticalSpacing(24),
+        Container(  //Making login banner image round
+          height: 200,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  fit: BoxFit.fitWidth, //It will stretch the image
+                  image:  AssetImage('assets/illustration.png')),
+              borderRadius: BorderRadius.circular(12)),
+        ),
+        verticalSpacing(24),
+      ],
+    );
+  }
+
+  Widget _buildFooter() {
+    return Column(
+      children: [
+        GestureDetector(
+          onDoubleTap: () {
+            print('Double tap');
+          },
+          onLongPress: () {
+            print('on Long press');
+          },
+          onTap: ()  async{
+            print('Link clicked');
+            if (!await launchUrl(Uri.https(_mainUrl, 'api/people'))) {
+              throw 'Could not launch';
+            }
+          },
+          child: Column(
+            children: [
+              Text('Find us on'),
+              Text(_mainUrl),
+            ],
+          ),
+        ),
+
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SocialMediaButton.twitter(
+              size: 20,
+              color: Colors.blue,
+              url: "https://twitter.com",
+            ),
+            SocialMediaButton.linkedin(
+                size: 20,
+                color: Colors.blue,
+                url: "https://linkedin.com"
+            )
+          ],
+        )
+      ],
+    );
+  }
+
+  Widget _buildForm(context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.stretch,  //for login button stretch
+      children: [
+        Form(
+          key: _formkey,
+          child: Column(
+            children: [
+              LoginTextField(
+                hintText:"Enter your username",
+                validator: (value) {
+                  if (value != null &&
+                      value.isNotEmpty &&
+                      value.length < 5) {
+                    return "Your username should be more than 5 character";
+                  } else if (value != null && value.isEmpty) {
+                    return "Please type your username";
+                  }
+                  return null;
+                },
+                controller: userNameController,
+              ),
+              verticalSpacing(24),
+              LoginTextField(
+                hasAsterisks: true,
+                hintText: 'Enter your password',
+                controller: passwordController,
+              ),
+            ],
+          ),
+        ),
+        verticalSpacing(20),
+        ElevatedButton(
+            onPressed: () async {
+              await loginPage(context);
+            },
+            child: Text(
+              'Login',
+              style: TextStyle(fontSize: 20),
+            )),
+        //OutlinedButton(onPressed: () {}, child: FlutterLogo()),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -41,128 +163,38 @@ class LoginPage extends StatelessWidget {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text('Let\'s sign you in!',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 30,
-                      color: Colors.brown,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 0.5)),
-              Text(
-                'Welcome back! \n you\'ve been missed!',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    color: Colors.blueGrey),
-              ),
-              verticalSpacing(24),
-              Container(  //Making login banner image round
-                height: 200,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        fit: BoxFit.fitWidth, //It will stretch the image
-                        image:  AssetImage('assets/illustration.png')),
-                    borderRadius: BorderRadius.circular(12)),
-              ),
-              verticalSpacing(24),
-              Form(
-                key: _formkey,
-                child: Column(
+          child: LayoutBuilder(
+              builder: (context, BoxConstraints constraints) {
+                if(constraints.maxWidth > 1000){
+                  //render web layout
+                  return Row(
+                    children: [
+                      Spacer(flex: 1,),
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            _buildHeader(context),
+                            _buildFooter(),
+                          ],
+                        ),
+                      ),
+                      Spacer(flex: 1,),
+                      Expanded(child: _buildForm(context)),
+                      Spacer(flex: 1,),
+                    ],
+                  );
+                }
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    LoginTextField(
-                      hintText:"Enter your username",
-                      validator: (value) {
-                        if (value != null &&
-                            value.isNotEmpty &&
-                            value.length < 5) {
-                          return "Your username should be more than 5 character";
-                        } else if (value != null && value.isEmpty) {
-                          return "Please type your username";
-                        }
-                        return null;
-                      },
-                      controller: userNameController,
-                    ),
-                    verticalSpacing(24),
-                    LoginTextField(
-                      hasAsterisks: true,
-                      hintText: 'Enter your password',
-                      controller: passwordController,
-                    ),
+                    _buildHeader(context),
+                    _buildForm(context),
+                    _buildFooter()
                   ],
-                ),
-              ),
-              verticalSpacing(20),
-              ElevatedButton(
-                  onPressed: () async {
-                    await loginPage(context);
-                  },
-                  child: Text(
-                    'Login',
-                    style: TextStyle(fontSize: 20),
-                  )),
-              OutlinedButton(onPressed: () {}, child: FlutterLogo()),
-              GestureDetector(
-                onDoubleTap: () {
-                  print('Double tap');
-                },
-                onLongPress: () {
-                  print('on Long press');
-                },
-                onTap: ()  async{
-                  print('Link clicked');
-                  if (!await launchUrl(Uri.https(_mainUrl, 'api/people'))) {
-                    throw 'Could not launch';
-                  }
-                },
-                child: Column(
-                  children: [
-                    Text('Find us on'),
-                    Text(_mainUrl),
-                  ],
-                ),
-              ),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SocialMediaButton.twitter(
-                    size: 20,
-                    color: Colors.blue,
-                    url: "https://twitter.com",
-                  ),
-                  SocialMediaButton.linkedin(
-                    size: 20,
-                    color: Colors.blue,
-                    url: "https://linkedin.com"
-                  )
-                ],
-              )
-
-              /*GestureDetector(
-                onDoubleTap: (){
-                  print('Double tap');
-                },
-                onLongPress: (){
-                  print('on Long press');
-                },
-                onTap: (){
-                  print('Link clicked');
-                },
-                child: Column(
-                  children: [
-                    Text('Find us on'),
-                    Text('https://google.com'),
-                  ],
-                ),
-              )*/
-            ],
+                );
+              }
           ),
         ),
       ),
