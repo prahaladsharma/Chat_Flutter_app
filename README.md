@@ -1,11 +1,11 @@
 # flutter_app
 
-Flutter demo for static initializer.
- - Here we create Static initializer demo.
+Flutter demo for creating notifiers.
+ - Here we create creating notifiers.
 
  Action Item:-
  1. auth_service.dart
- 2. chat_input.dart
+ 2. chat_page.dart
  3. main.dart
 
 ## Getting Started

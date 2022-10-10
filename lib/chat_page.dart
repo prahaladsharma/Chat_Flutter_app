@@ -56,7 +56,8 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
-    final userName = ModalRoute.of(context)!.settings.arguments as String;
+    //watch - it will observe the data change and notify to UI.
+    final userName = context.watch<AuthService>().getUserName();
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -65,6 +66,11 @@ class _ChatPageState extends State<ChatPage> {
         elevation: 0,
         title: Text('Hi $userName!'),
         actions: [
+          IconButton(
+              onPressed: () {
+                context.read<AuthService>().updateUserName('New Name');
+              },
+              icon: Icon(Icons.logout)),
           IconButton(
               onPressed: () {
                 context.read<AuthService>().logoutUser();

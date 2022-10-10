@@ -9,7 +9,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AuthService.init();
 
-  runApp(Provider(create: (BuildContext context) => AuthService(),
+  runApp(ChangeNotifierProvider(
+      create: (BuildContext context) => AuthService(),
       child: ChatApp()));
 }
 

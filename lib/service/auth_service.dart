@@ -1,7 +1,8 @@
 
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class AuthService {
+class AuthService extends ChangeNotifier {
 
   static init() async {
     _prefers = await SharedPreferences.getInstance();
@@ -23,5 +24,10 @@ class AuthService {
 
   String? getUserName() {
     return _prefers.getString('userName') ?? 'DefaultValue' ;
+  }
+
+  void updateUserName(String updateUserName){
+    _prefers.setString('userName', updateUserName);
+    notifyListeners();
   }
 }
