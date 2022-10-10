@@ -8,6 +8,7 @@ import 'package:flutter_app/service/auth_service.dart';
 import 'package:flutter_app/widgets/chat_bubble.dart';
 import 'package:flutter_app/widgets/chat_input.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
 import 'model/image_model.dart';
 
@@ -80,7 +81,8 @@ class _ChatPageState extends State<ChatPage> {
                 itemCount: _messages.length,
                 itemBuilder: (context, index){
                   return ChatBubble(
-                      alignment: _messages[index].author.userName == AuthService().getUserName()
+                      alignment: _messages[index].author.userName ==
+                          context.read<AuthService>().getUserName()
                           ? Alignment.centerRight
                           : Alignment.centerLeft,
                       chatMessageEntity: _messages[index]);

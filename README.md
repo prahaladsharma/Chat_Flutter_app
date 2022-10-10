@@ -1,13 +1,14 @@
 # flutter_app
 
-Flutter demo for state management.
- - Here we create a AuthService class and store username and then pass it entire application.
+Flutter demo for state management using provider lib.
+ - Here we create a AuthService class and store username and then pass it entire application using provider lib.
 
  Action Item:-
- 1. auth_service.dart
+ 1. main.dart
  2. chat_bubble.dart
  3. chat_page.dart
  4. chat_input.dart
+ 5. pubspec.yaml
 
 
 ## Getting Started

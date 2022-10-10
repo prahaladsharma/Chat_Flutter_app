@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/model/chat_message_entity.dart';
-
 import '../service/auth_service.dart';
+import 'package:provider/provider.dart';
 
 class ChatBubble extends StatelessWidget {
 
@@ -14,7 +14,7 @@ class ChatBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    bool isAuthor = chatMessageEntity.author.userName == AuthService().getUserName();
+    bool isAuthor = chatMessageEntity.author.userName == context.read<AuthService>().getUserName();
 
     return Align(
       alignment: alignment,

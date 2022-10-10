@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/model/chat_message_entity.dart';
 import 'package:flutter_app/widgets/picker_body.dart';
-
 import '../service/auth_service.dart';
+import 'package:provider/provider.dart';
 
 class ChatInput extends StatefulWidget {
 
@@ -27,7 +27,7 @@ class _ChatInputState extends State<ChatInput> {
         text: chatMessageController.text,
         id: "101",
         createdAt: DateTime.now().millisecondsSinceEpoch,
-        author: Author(userName: AuthService().getUserName())
+        author: Author(userName: context.read<AuthService>().getUserName())
     );
 
     if(_selectedImageUrl.isNotEmpty){
