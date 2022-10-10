@@ -1,7 +1,7 @@
 # flutter_app
 
-Flutter demo for creating notifiers.
- - Here we create creating notifiers.
+Flutter demo for dynamic home page.
+ - Here we create flutter app, if user login once, not need to login again if he not logout.
 
  Action Item:-
  1. auth_service.dart

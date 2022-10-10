@@ -26,8 +26,10 @@ class AuthService extends ChangeNotifier {
     return _prefers.getString('userName') ?? 'DefaultValue' ;
   }
 
-  void updateUserName(String updateUserName){
-    _prefers.setString('userName', updateUserName);
-    notifyListeners();
+  Future<bool> isLoggedIn() async {
+    String? userName = await _prefers.getString('userName');
+    if(userName == null) return false;
+    return true;
   }
+
 }
